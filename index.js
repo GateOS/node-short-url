@@ -10,7 +10,7 @@ var pjson = require('./package.json');
 
 program
     .version(pjson.version)
-    .option('-p, --port', 'Add peppers')
+    .option('-p, --port <port>', 'server port') 
     .parse(process.argv);
 
 
