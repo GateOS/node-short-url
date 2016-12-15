@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-var Datastore = require('nedb')
-var db = new Datastore({ filename: './url.db', autoload: true });
-var shortid = require('shortid');
+
 
 
 
@@ -11,11 +9,16 @@ var pjson = require('./package.json');
 program
     .version(pjson.version)
     .option('-p, --port <port>', 'server port') 
+    .option('-d, --db_path <db_path>','db path')
     .parse(process.argv);
 
 
 var express = require('express');
 var app = express();
+
+var Datastore = require('nedb')
+var db = new Datastore({ filename:program.db_path || './url.db', autoload: true });
+var shortid = require('shortid');
 
 app.get('/', function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");   //设置跨域访问  
