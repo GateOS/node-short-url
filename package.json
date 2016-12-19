@@ -1,24 +1,30 @@
 {
   "name": "node-short-url",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "bin": {
     "shorturl-server": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm-auto-version",
+    "postpublish": "git push origin --tags"
   },
   "author": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/nilornot/node-short-url.git"
   },
+  "publishConfig": {
+    "registry": "http://192.168.0.31:8081/repository/skong-npm-release/"
+  },
   "license": "ISC",
   "dependencies": {
     "commander": "^2.9.0",
     "express": "^4.14.0",
     "nedb": "^1.8.0",
+    "npm-auto-version": "^1.0.0",
     "shortid": "^2.2.6"
   }
 }
